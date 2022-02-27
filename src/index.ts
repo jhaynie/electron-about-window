@@ -176,7 +176,7 @@ export default function openAboutWindow(info_or_img_path: AboutWindowInfo | stri
             height: 400,
             useContentSize: true,
             titleBarStyle: 'hidden-inset',
-            show: !info.adjust_window_size,
+            show: false,
             icon: info.icon_path,
             webPreferences: {
                 // For security reasons, nodeIntegration is no longer true by default when using Electron v5 or later
