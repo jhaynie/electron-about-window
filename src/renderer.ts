@@ -1,14 +1,17 @@
 import { ipcRenderer, shell } from 'electron';
+
 import type { AboutWindowInfo } from './index';
 
-ipcRenderer.on('about-window:info', (_: any, info: AboutWindowInfo, app_name: string, version: string) => {
+ipcRenderer.on('about-window:info', (_: any, info: AboutWindowInfo, app_name: string, _version: string) => {
     // Note: app.getName() was replaced with app.name at Electron v7
     const open_home = () => shell.openExternal(info.homepage);
     const content = info.use_inner_html ? 'innerHTML' : 'innerText';
     document.title = info.win_options.title || `About ${app_name}`;
 
     const title_elem = document.querySelector('.title') as HTMLHeadingElement;
-    title_elem.innerText = `${app_name} ${version}`;
+    title_elem.innerText = app_name;
+
+    document.body.classList.add(info.darkMode ? 'dark' : 'light');
 
     if (info.homepage) {
         title_elem.addEventListener('click', open_home);

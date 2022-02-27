@@ -1,4 +1,4 @@
-import { app as appMain, BrowserWindow as BrowserWindowMain, shell, ipcMain } from 'electron';
+import { app as appMain, BrowserWindow as BrowserWindowMain, ipcMain, nativeTheme, shell } from 'electron';
 import { statSync } from 'fs';
 import * as path from 'path';
 
@@ -38,6 +38,7 @@ export interface AboutWindowInfo {
     app?: Electron.App;
     BrowserWindow?: typeof Electron.BrowserWindow;
     ipcMain?: Electron.IpcMain;
+    darkMode?: boolean;
 }
 
 declare namespace NodeJS {
@@ -229,6 +230,7 @@ export default function openAboutWindow(info_or_img_path: AboutWindowInfo | stri
         info.win_options = { title: win_title };
         const app_name = info.product_name || app.name || app.getName();
         const version = app.getVersion();
+        info.darkMode = info.darkMode === undefined ? nativeTheme.shouldUseDarkColors : info.darkMode;
         window.webContents.send('about-window:info', info, app_name, version);
         if (info.open_devtools) {
             if (process.versions.electron >= '1.4') {

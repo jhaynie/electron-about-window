@@ -13,10 +13,16 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #333;
-  background-color: #eee;
   font-size: 12px;
-  font-family: 'Helvetica', 'Arial', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+  font-family: 'Helvetica',
+    'Arial',
+    'ヒラギノ角ゴ Pro W3',
+    'Hiragino Kaku Gothic Pro',
+    'メイリオ',
+    Meiryo,
+    'ＭＳ Ｐゴシック',
+    'MS PGothic',
+    sans-serif;
 }
 
 .logo {
@@ -55,7 +61,8 @@ body {
   text-align: center;
 }
 
-.buttons button {
+.buttons
+  button {
   margin-top: 1em;
   width: 100px;
   height: 24px;
@@ -74,6 +81,21 @@ body {
 
 .clickable,
 .bug-report-link,
-.buttons button {
+.buttons
+  button {
   -webkit-app-region: no-drag;
+}
+
+body.dark {
+  background-color: rgb(
+    23,
+    23,
+    23
+  );
+  color: white;
+}
+
+body.light {
+  background-color: #eee;
+  color: #333;
 }

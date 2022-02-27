@@ -29,7 +29,7 @@ app.once('ready', function () {
                             icon_path: join(__dirname, 'icon.png'),
                             copyright: 'Copyright (c) 2015 rhysd',
                             package_json_dir: __dirname,
-                            open_devtools: process.env.NODE_ENV !== 'production',
+                            open_devtools: true,
                         }),
                 },
                 {
@@ -47,6 +47,7 @@ app.once('ready', function () {
                 },
                 {
                     label: 'About This App (modal with close)',
+                    darkMode: true,
                     click: () =>
                         openAboutWindow({
                             icon_path: join(__dirname, 'icon.png'),
